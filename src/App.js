@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import channelService from './services/channels'
+import ChannelList from './components/ChannelList'
 
-function App() {
+const App = () => {
+  const [page, setPage] = useState(null)
+  const [channels, setChannels] = useState(null)
+
+  useEffect(() => {
+    channelService.getChannels().then((response) => {
+      setChannels(response.channels)
+    })
+  }, [])
+
+  const pages = new Map([
+    ['all', <ChannelList channels={channels} />]
+  ])
+
+  const showPage = (input) => {
+    let visible = pages.get(page)
+    return visible
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hello world!</h1>
+      <button onClick={() => setPage('all')}>All channels</button>
+      {showPage()}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
