@@ -1,6 +1,12 @@
 import React from 'react'
 
-const ChannelList = ({ channels }) => {
+const ChannelList = ({ channels, setPage, setChannelId }) => {
+
+  if (!channels) {
+    return (
+      <h2>Loading channels..</h2>
+    )
+  }
 
   console.log(channels)
   return (
@@ -9,7 +15,12 @@ const ChannelList = ({ channels }) => {
       {channels.map((channel) => {
         return (
           <div className="channel-description">
-            <img src={channel.logos[6].url} alt="Channel logo" />
+            <button onClick={() => {
+              setChannelId(channel.id)
+              setPage('channel')
+            }}>
+              <img src={channel.logos[6].url} alt="Channel logo" />
+            </button>
             <p>{channel.description}</p>
           </div>
         )
