@@ -10,4 +10,11 @@ const time = (secs) => {
   return dateFormat(readableDate, 'HH:MM')
 }
 
-export default ({ today, time })
+const nextDay = () => {
+  let newDate = new Date()
+  newDate.setDate(newDate.getDate() + 1)
+  const formattedDate = newDate.toString()
+  return dateFormat(formattedDate, 'yyyy-mm-dd')
+}
+
+export default ({ today, time, nextDay })

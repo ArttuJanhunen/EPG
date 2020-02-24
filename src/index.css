@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0px;
+  padding-top: 130px;
   text-align: center;
 }
 
@@ -17,7 +17,9 @@ code {
 header {
   background-color: rgb(0,25, 175);
   height: 100px;
-  
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .header-button {
@@ -57,4 +59,22 @@ header {
 
 .listing {
   display: inline-block;
+}
+
+.day-button, .top-button {
+  background-color: rgb(0,25, 175);
+  color: rgb(255,255,255);
+  font-size: 20px;
+  border: 0px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.day-button:hover, .top-button:hover {
+  background-color: rgb(4, 16, 85);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
 }

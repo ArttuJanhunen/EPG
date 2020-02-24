@@ -8,7 +8,6 @@ const ChannelList = ({ channels, setPage, setChannelId }) => {
     )
   }
 
-  console.log(channels)
   return (
     <div className="listing">
       <h1>Channel list</h1>

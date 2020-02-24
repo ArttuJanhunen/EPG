@@ -5,12 +5,11 @@ import channelService from '../services/channels'
 const Channel = ({ channelId, channels }) => {
   const [channel, setChannel] = useState(null)
   const [dayEPG, setDayEPG] = useState(null)
-  const [date, setDate] = useState(null)
+  const [day, setDay] = useState('Today')
 
   useEffect(() => {
     const current = channels.filter(channel => channel.id === channelId)
     setChannel(current[0])
-    setDate(timeService.today())
     channelService.getDayForChannel(channelId, timeService.today()).then(response => {
       setDayEPG(response.schedule[0].programs)
     })
@@ -22,6 +21,19 @@ const Channel = ({ channelId, channels }) => {
     )
   }
 
+  const nextDay = () => {
+    channelService.getDayForChannel(channelId, timeService.nextDay()).then(response => {
+      setDayEPG(response.schedule[0].programs)
+      setDay('Tomorrow')
+    })
+  }
+
+  const today = () => {
+    channelService.getDayForChannel(channelId, timeService.today()).then(response => {
+      setDayEPG(response.schedule[0].programs)
+      setDay('Today')
+    })
+  }
 
   const upcomingPrograms = dayEPG.filter(program =>
     program.status === 'live' || program.status === 'upcoming')
@@ -29,7 +41,11 @@ const Channel = ({ channelId, channels }) => {
   return (
     <div className="listing">
       <img src={channel.logos[7].url} alt="Channel logo" />
-      <h1>Today on {channel.name}:</h1>
+      <div>
+        <button className="day-button" onClick={() => today()}>Today</button>
+        <button className="day-button" onClick={() => nextDay()}>Tomorrow</button>
+      </div>
+      <h1>{day} on {channel.name}:</h1>
       {upcomingPrograms.map(program => {
         return (
           <div className="channel-description">

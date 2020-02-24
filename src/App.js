@@ -30,13 +30,26 @@ const App = () => {
     return visible
   }
 
+  const scroll = () => {
+    window.scrollTo(0, 0)
+  }
+
   return (
     <div>
       <header>
-        <button className="header-button" onClick={() => setPage('all')}>All channels</button>
-        <button className="header-button" onClick={() => setPage('live')}>Live now</button>
+        <button className="header-button" onClick={() => {
+          setPage('all')
+          scroll()
+        }}>All channels</button>
+        <button className="header-button" onClick={() => {
+          setPage('live')
+          scroll()
+        }}>Live now</button>
       </header>
       {showPage()}
+      <footer>
+        <button className="top-button" onClick={() => scroll()}>Back to top</button>
+      </footer>
     </div>
   )
 }
