@@ -9,6 +9,10 @@ body {
   text-align: center;
 }
 
+p {
+  font-weight: bold;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -45,12 +49,13 @@ header {
   border-radius: 5px;
   margin: 5px;
   max-width: 500px;
+  background-color: rgb(185, 194, 247);
 }
 
 .list-button {
-  background-color: rgb(255,255,255);
-  border: 0px;
+  background-color: rgb(204, 228, 243);
   border-radius: 5px;
+  border: 0px;
 }
 
 .list-button:hover {
