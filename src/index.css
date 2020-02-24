@@ -5,12 +5,34 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 10px;
+  padding: 0px;
+  text-align: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+header {
+  background-color: rgb(0,25, 175);
+  height: 100px;
+  
+}
+
+.header-button {
+  font-size: 30px;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  color: rgb(0,25, 175);
+  background-color: rgb(255,255,255);
+  border-color: rgb(255,255,255);
+  border: 0px;
+}
+
+.header-button:hover {
+  background-color: rgb(185, 194, 247);
 }
 
 .channel-description {
@@ -21,4 +43,18 @@ code {
   border-radius: 5px;
   margin: 5px;
   max-width: 500px;
+}
+
+.list-button {
+  background-color: rgb(255,255,255);
+  border: 0px;
+  border-radius: 5px;
+}
+
+.list-button:hover {
+  background-color: rgb(185, 194, 247);
+}
+
+.listing {
+  display: inline-block;
 }

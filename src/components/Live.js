@@ -29,12 +29,12 @@ const Live = ({ channels, live, setPage, setChannelId }) => {
   }
 
   return (
-    <div>
+    <div className="listing">
       <h1>Live now:</h1>
       {channels.map(channel => {
         return (
           <div className="channel-description">
-            <button onClick={() => {
+            <button className="list-button" onClick={() => {
               setChannelId(channel.id)
               setPage('channel')
             }}>

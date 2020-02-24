@@ -27,12 +27,12 @@ const Channel = ({ channelId, channels }) => {
     program.status === 'live' || program.status === 'upcoming')
 
   return (
-    <div>
-      <img src={channel.logos[6].url} alt="Channel logo" />
+    <div className="listing">
+      <img src={channel.logos[7].url} alt="Channel logo" />
       <h1>Today on {channel.name}:</h1>
       {upcomingPrograms.map(program => {
         return (
-          <div>
+          <div className="channel-description">
             <h2>{timeService.time(program.startTimeUTC)}</h2>
             <h3>{program.name}</h3>
             <p>{program.shortDescription}</p>

@@ -33,10 +33,9 @@ const App = () => {
   return (
     <div>
       <header>
-        <button onClick={() => setPage('all')}>All channels</button>
-        <button onClick={() => setPage('live')}>Live now</button>
+        <button className="header-button" onClick={() => setPage('all')}>All channels</button>
+        <button className="header-button" onClick={() => setPage('live')}>Live now</button>
       </header>
-      <h1>Hello world!</h1>
       {showPage()}
     </div>
   )

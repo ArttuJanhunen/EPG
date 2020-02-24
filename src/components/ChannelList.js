@@ -10,12 +10,12 @@ const ChannelList = ({ channels, setPage, setChannelId }) => {
 
   console.log(channels)
   return (
-    <div>
-      <h2>Channel list</h2>
+    <div className="listing">
+      <h1>Channel list</h1>
       {channels.map((channel) => {
         return (
           <div className="channel-description">
-            <button onClick={() => {
+            <button className="list-button" onClick={() => {
               setChannelId(channel.id)
               setPage('channel')
             }}>
