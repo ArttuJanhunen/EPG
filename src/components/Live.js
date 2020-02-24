@@ -39,7 +39,7 @@ const Live = ({ channels, live, setPage, setChannelId }) => {
               setPage('channel')
             }}>
               <img src={channel.logos[6].url} alt="Channel logo" />
-              <p>More</p>
+              <p>Guide</p>
             </button>
             <h3>{liveByChannel(channel.id)}</h3>
             <p>{liveDescriptionByChannel(channel.id)}</p>

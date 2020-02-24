@@ -19,7 +19,7 @@ const ChannelList = ({ channels, setPage, setChannelId }) => {
               setPage('channel')
             }}>
               <img src={channel.logos[6].url} alt="Channel logo" />
-              <p>More</p>
+              <p>Guide</p>
             </button>
             <p>{channel.description}</p>
           </div>
