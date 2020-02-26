@@ -79,11 +79,14 @@ header {
   background-color: rgb(4, 16, 85);
 }
 
-.top-button {
-  opacity: 0.25;
-}
 
 footer {
   position: fixed;
   bottom: 0;
+}
+
+@media only screen and (max-width: 755px) {
+  .top-button {
+    opacity: 0.25;
+  }
 }
