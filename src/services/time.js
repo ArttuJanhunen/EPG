@@ -17,4 +17,16 @@ const nextDay = () => {
   return dateFormat(formattedDate, 'yyyy-mm-dd')
 }
 
-export default ({ today, time, nextDay })
+const weekFromNow = () => {
+  let weekInFuture = new Date()
+  weekInFuture.setDate(weekInFuture.getDate() + 7)
+  const formattedDate = weekInFuture.toString()
+  return dateFormat(formattedDate, 'yyyy-mm-dd')
+}
+
+const prettyDate = (date) => {
+  const pretty = `${date.substring(8, 10)}.${date.substring(6, 7)}.${date.substring(0, 4)}`
+  return pretty
+}
+
+export default ({ today, time, nextDay, weekFromNow, prettyDate })

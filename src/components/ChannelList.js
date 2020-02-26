@@ -1,4 +1,5 @@
 import React from 'react'
+import ChannelInList from './ChannelInList'
 
 const ChannelList = ({ channels, setPage, setChannelId }) => {
 
@@ -13,16 +14,11 @@ const ChannelList = ({ channels, setPage, setChannelId }) => {
       <h1>Channel list</h1>
       {channels.map((channel) => {
         return (
-          <div className="channel-description">
-            <button className="list-button" onClick={() => {
-              setChannelId(channel.id)
-              setPage('channel')
-            }}>
-              <img src={channel.logos[6].url} alt="Channel logo" />
-              <p>Guide</p>
-            </button>
-            <p>{channel.description}</p>
-          </div>
+          <ChannelInList
+            channel={channel}
+            setChannelId={setChannelId}
+            setPage={setPage}
+          />
         )
       })}
     </div>

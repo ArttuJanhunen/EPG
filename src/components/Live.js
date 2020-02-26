@@ -1,4 +1,5 @@
 import React from 'react'
+import LiveChannel from './LiveChannel'
 
 const Live = ({ channels, live, setPage, setChannelId }) => {
 
@@ -33,17 +34,13 @@ const Live = ({ channels, live, setPage, setChannelId }) => {
       <h1>Live now:</h1>
       {channels.map(channel => {
         return (
-          <div className="channel-description">
-            <button className="list-button" onClick={() => {
-              setChannelId(channel.id)
-              setPage('channel')
-            }}>
-              <img src={channel.logos[6].url} alt="Channel logo" />
-              <p>Guide</p>
-            </button>
-            <h3>{liveByChannel(channel.id)}</h3>
-            <p>{liveDescriptionByChannel(channel.id)}</p>
-          </div>
+          <LiveChannel
+            channel={channel}
+            setChannelId={setChannelId}
+            setPage={setPage}
+            liveByChannel={liveByChannel}
+            liveDescriptionByChannel={liveDescriptionByChannel}
+          />
         )
       })}
     </div>

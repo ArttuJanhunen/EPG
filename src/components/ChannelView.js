@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import timeService from '../services/time'
 import channelService from '../services/channels'
+import DatePicker from './DatePicker'
+import Program from './Program'
 
 const Channel = ({ channelId, channels }) => {
   const [channel, setChannel] = useState(null)
   const [dayEPG, setDayEPG] = useState(null)
   const [day, setDay] = useState('Today')
+  const [dateInputVisible, setDateInputVisible] = useState(false)
+  const [date, setDate] = useState(null)
 
   useEffect(() => {
     const current = channels.filter(channel => channel.id === channelId)
@@ -35,6 +39,23 @@ const Channel = ({ channelId, channels }) => {
     })
   }
 
+  const handleSetVisible = () => {
+    setDateInputVisible(true)
+  }
+
+  const handleHide = () => {
+    setDateInputVisible(false)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    channelService.getDayForChannel(channelId, date).then(response => {
+      setDayEPG(response.schedule[0].programs)
+      setDay(timeService.prettyDate(date))
+      setDateInputVisible(false)
+    })
+  }
+
   const upcomingPrograms = dayEPG.filter(program =>
     program.status === 'live' || program.status === 'upcoming')
 
@@ -45,17 +66,20 @@ const Channel = ({ channelId, channels }) => {
         <button className="day-button" onClick={() => today()}>Today</button>
         <button className="day-button" onClick={() => nextDay()}>Tomorrow</button>
       </div>
+      <br />
+      <div>
+        <button className="day-button" onClick={() => handleSetVisible()}>On a certain day</button>
+      </div>
+      {dateInputVisible &&
+        <DatePicker
+          handleHide={handleHide}
+          handleSubmit={handleSubmit}
+          setDate={setDate}
+        />}
       <h1>{day} on {channel.name}:</h1>
       {upcomingPrograms.map(program => {
-        return (
-          <div className="channel-description">
-            <h2>{timeService.time(program.startTimeUTC)}</h2>
-            <h3>{program.name}</h3>
-            <p>{program.shortDescription}</p>
-          </div>
-        )
+        return (<Program program={program} />)
       })}
-
     </div>
   )
 }

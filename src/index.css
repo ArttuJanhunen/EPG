@@ -79,6 +79,24 @@ header {
   background-color: rgb(4, 16, 85);
 }
 
+.date-picker {
+  text-align: center;
+  padding: 2px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: rgb(185, 194, 247);
+}
+
+input {
+  font-size: 20px;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0px;
+}
+
 
 footer {
   position: fixed;
