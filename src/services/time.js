@@ -25,7 +25,7 @@ const weekFromNow = () => {
 }
 
 const prettyDate = (date) => {
-  const pretty = `${date.substring(8, 10)}.${date.substring(6, 7)}.${date.substring(0, 4)}`
+  const pretty = `${date.substring(8, 10)}.${date.substring(5, 7)}.${date.substring(0, 4)}`
   return pretty
 }
 
